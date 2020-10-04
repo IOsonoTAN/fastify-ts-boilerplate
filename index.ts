@@ -1,5 +1,5 @@
 import server from './src/server'
-import { environments } from './src/config'
+import { environments } from './src/configs'
 
 server.listen(environments.port, (error) => {
   if (error) {
