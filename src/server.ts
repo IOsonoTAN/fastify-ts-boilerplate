@@ -38,6 +38,7 @@ server.get('/', {
   name: process.env.npm_package_name,
   version: process.env.npm_package_version
 }))
+
 server.get('/ping', {
   schema: {
     description: 'An endpoint that use for health check',
