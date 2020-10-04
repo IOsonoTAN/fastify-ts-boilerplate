@@ -1,5 +1,5 @@
 import fastify from 'fastify'
-import { errors } from './config'
+import { errors } from './configs'
 import { throwError } from './utils'
 
 const server = fastify({
