@@ -1,0 +1,32 @@
+{
+  "name": "fastify-typescript",
+  "version": "0.1.0",
+  "description": "A Node.js framework was built by Fastify with TypeScript and Jest to be testing framework.",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "nodemon ./index.ts",
+    "start": "node ./build/index.js",
+    "test": "npx jest"
+  },
+  "keywords": [
+    "fastify",
+    "typescript",
+    "jest"
+  ],
+  "author": "IOsonoTAN",
+  "license": "ISC",
+  "dependencies": {
+    "fastify": "^3.5.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.14",
+    "@types/node": "^14.11.2",
+    "jest": "^26.4.2",
+    "nodemon": "^2.0.4",
+    "pino-pretty": "^4.2.1",
+    "ts-jest": "^26.4.1",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.3"
+  }
+}

@@ -1,0 +1,1 @@
+# A Node.js framework was built by Fastify with TypeScript and Jest to be testing framework.
