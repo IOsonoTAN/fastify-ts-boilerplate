@@ -1,7 +1,7 @@
 export default {
   unauthorized: {
     code: 'UNAUTHORIZED',
-    message: 'unauthorized',
+    message: 'Unauthorized',
     statusCode: 401
   }
 }

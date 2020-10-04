@@ -3,6 +3,7 @@ import { errors } from './configs'
 import { throwError } from './utils'
 
 const server = fastify({
+  disableRequestLogging: true,
   logger: {
     prettyPrint: true
   }
@@ -10,14 +11,14 @@ const server = fastify({
 
 server.get('/ping', async () => 'OK')
 
-server.get('/error', async () => {
+server.get('/error', async () => (
   throwError({
     ...errors.unauthorized,
     data: {
       errorType: 'example_error'
     }
   })
-})
+))
 
 server.setErrorHandler((error, request, reply) => {
   const errorObject = {
@@ -29,6 +30,8 @@ server.setErrorHandler((error, request, reply) => {
       data: error.data
     }
   }
+
+  request.log.error(errorObject)
   reply
     .type('application/json')
     .code(error.statusCode || 500)
