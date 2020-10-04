@@ -1,4 +1,5 @@
 import fastify from 'fastify'
+import fastifySwagger from 'fastify-swagger'
 import { errors } from './configs'
 import { throwError } from './utils'
 
@@ -9,11 +10,45 @@ const server = fastify({
   }
 })
 
-server.get('/', async () => ({
+server.register(fastifySwagger, {
+  swagger: {
+    info: {
+      title: process.env.npm_package_name || '',
+      description: process.env.npm_package_description,
+      version: process.env.npm_package_version || ''
+    }
+  },
+  exposeRoute: true
+})
+
+server.get('/', {
+  schema: {
+    description: 'An endpoint to get project/package info',
+    response: {
+      200: {
+        type: 'object',
+        properties: {
+          name: { type: 'string', example: process.env.npm_package_name },
+          version: { type: 'string', example: process.env.npm_package_version }
+        }
+      }
+    }
+  }
+}, async () => ({
   name: process.env.npm_package_name,
   version: process.env.npm_package_version
 }))
-server.get('/ping', async () => 'OK')
+server.get('/ping', {
+  schema: {
+    description: 'An endpoint that use for health check',
+    response: {
+      200: {
+        type: 'string',
+        description: 'OK'
+      }
+    }
+  }
+}, async () => 'OK')
 
 server.get('/error', async () => (
   throwError({
