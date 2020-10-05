@@ -9,8 +9,7 @@ const rootServices = (server: FastifyInstance) => {
           type: 'object',
           properties: {
             name: { type: 'string', example: process.env.npm_package_name },
-            version: { type: 'string', example: process.env.npm_package_version },
-            test: { type: 'string' }
+            version: { type: 'string', example: process.env.npm_package_version }
           }
         }
       }
