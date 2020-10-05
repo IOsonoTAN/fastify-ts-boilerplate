@@ -1,6 +1,8 @@
 import { FastifyInstance } from 'fastify'
+import { errors } from '../../configs'
+import { throwError } from '../../utils'
 
-const rootServices = (server: FastifyInstance) => {
+const rootServices = (server: FastifyInstance): FastifyInstance => {
   server.get('/', {
     schema: {
       description: 'An endpoint to get project/package info',
