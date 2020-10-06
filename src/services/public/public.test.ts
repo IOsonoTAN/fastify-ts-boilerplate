@@ -1,6 +1,6 @@
 import server from '../../server'
 
-describe('server test', () => {
+describe('server public endpoints', () => {
   afterAll(() => {
     server.close()
   })

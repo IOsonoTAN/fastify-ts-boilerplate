@@ -1,1 +1,1 @@
-export { default as rootServices } from './root'
+export { default as publicServices } from './public'

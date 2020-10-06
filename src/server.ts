@@ -1,8 +1,8 @@
-import fastify from 'fastify'
+import fastify, { FastifyInstance } from 'fastify'
 import { swagger } from './configs'
-import { rootServices } from './services'
+import { publicServices } from './services'
 
-const server = fastify({
+const server: FastifyInstance = fastify({
   disableRequestLogging: true,
   logger: {
     prettyPrint: true
@@ -17,7 +17,7 @@ swagger(server)
 /**
  * Services
  */
-rootServices(server)
+publicServices(server)
 
 /**
  * Hooks and handlers
@@ -28,8 +28,6 @@ server.setErrorHandler((error, request, reply) => {
       code: error.code || '',
       message: error.message,
       statusCode: error.statusCode,
-      // @ts-ignore
-      data: error.data
     }
   }
 
